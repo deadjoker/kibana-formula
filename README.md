@@ -1,4 +1,6 @@
 kibana-formula
 ==============
 
-kibana+logstash+elasticsearch
+install kibana+logstash+elasticsearch
+
+based on apache and mysql
