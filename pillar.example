@@ -1,0 +1,42 @@
+## Used by mysql module
+mysql.pass: !!str 'infohold'
+
+mysql:
+  server:
+    root_password: !!str 'infohold'
+    bind-address: 0.0.0.0
+    port: 3306
+    user: mysql
+
+elastic:
+  htpasswd: |
+    admin:{SHA}YB8YiWZ++uuzO4wSVyg12j8Cf3g=
+  {% if grains['os_family'] == 'RedHat' %}
+  htpasswd_file: /etc/httpd/elastic_passwd
+  {% elif grains['os_family'] == 'Debian' %}
+  htpasswd_file: /etc/apache2/elastic_passwd
+  {% endif %}
+
+kibana:
+  site_name: ss
+  wwwhome: /usr/share
+  md5: 210e66901b22304a2bada3305955b115
+  version: 3.0.1
+  {% if grains['os_family'] == 'RedHat' %}
+  apache:
+    user: apache
+    group: apache
+    confdir: /etc/httpd/conf.d
+  {% elif grains['os_family'] == 'Debian' %}
+  apache:
+    user: www-data
+    group: www-data
+    confdir: /etc/apache2/sites-enabled
+  {% endif %}
+
+java:
+  {% if grains['os_family'] == 'RedHat' %}
+  name: java-1.7.0-openjdk
+  {% elif grains['os_family'] == 'Debian' %}
+  name: openjdk-7-jre-headless
+  {% endif %}

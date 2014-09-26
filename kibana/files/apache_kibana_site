@@ -1,0 +1,12 @@
+# Define /zabbix alias, this is the default
+<IfModule mod_alias.c>
+    Alias /kibana {{ kibana_wwwroot }}/kibana-{{kibana_version}}
+</IfModule>
+
+<Directory "{{ kibana_wwwroot }}/kibana-{{kibana_version}}" >
+    Options FollowSymLinks
+    AllowOverride AuthConfig
+    AuthUserFile {{ elastic_htpasswd_file }}
+    Order allow,deny
+    Allow from all
+</Directory>
