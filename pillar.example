@@ -1,9 +1,9 @@
 ## Used by mysql module
-mysql.pass: !!str 'infohold'
+mysql.pass: !!str 'abcabc'
 
 mysql:
   server:
-    root_password: !!str 'infohold'
+    root_password: !!str 'abcabc'
     bind-address: 0.0.0.0
     port: 3306
     user: mysql
